@@ -125,3 +125,26 @@ button:active {
 .zero {
   grid-column: span 2;
 }
+
+@media (max-width: 400px) {
+  .calculator {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 1.2rem;
+  }
+
+  .buttons {
+    gap: 8px;
+    padding: 16px;
+  }
+}
+
+@media (max-height: 700px) {
+  .calculator {
+    transform: scale(0.9);
+  }
+}
