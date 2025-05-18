@@ -53,46 +53,7 @@ function clearAll() {
   operation = undefined;
   updateDisplay();
 }
-function calculate() {
-  let computation;
-  const prev = parseFloat(previousOperand);
-  const current = parseFloat(currentOperand);
 
-  if (isNaN(prev) || isNaN(current)) return;
-
-  switch (operation) {
-    case "+":
-      computation = prev + current;
-      break;
-    case "-":
-      computation = prev - current;
-      break;
-    case "×":
-      computation = prev * current;
-      break;
-    case "÷":
-      if (current === 0) {
-        currentOperand = "Error";
-        previousOperand = "";
-        operation = undefined;
-        updateDisplay();
-        return;
-      }
-      computation = prev / current;
-      break;
-    default:
-      return;
-  }
-
-  // Format the result to avoid long decimal numbers
-  computation = Math.round(computation * 1000000) / 1000000;
-
-  currentOperand = computation.toString();
-  operation = undefined;
-  previousOperand = "";
-  shouldResetScreen = true;
-  updateDisplay();
-}
 function deleteNumber() {
   if (
     currentOperand.length === 1 ||
