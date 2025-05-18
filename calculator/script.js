@@ -47,4 +47,24 @@ function appendOperator(operator) {
   updateDisplay();
 }
 
+function clearAll() {
+  currentOperand = "0";
+  previousOperand = "";
+  operation = undefined;
+  updateDisplay();
+}
+
+function deleteNumber() {
+  if (
+    currentOperand.length === 1 ||
+    (currentOperand.length === 2 && currentOperand.startsWith("-"))
+  ) {
+    currentOperand = "0";
+  } else {
+    currentOperand = currentOperand.slice(0, -1);
+  }
+  updateDisplay();
+}
+
+// Initialize display
 updateDisplay();
