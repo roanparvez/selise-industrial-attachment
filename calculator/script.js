@@ -17,6 +17,8 @@ function updateDisplay() {
 }
 
 function appendNumber(number) {
+  if (currentOperand === "Error") return;
+
   if (currentOperand === "0" || shouldResetScreen) {
     currentOperand = number;
     shouldResetScreen = false;
@@ -27,6 +29,8 @@ function appendNumber(number) {
 }
 
 function appendDecimal() {
+  if (currentOperand === "Error") return;
+
   if (shouldResetScreen) {
     currentOperand = "0.";
     shouldResetScreen = false;
@@ -37,6 +41,8 @@ function appendDecimal() {
 }
 
 function appendOperator(operator) {
+  if (currentOperand === "Error") return;
+
   if (operation !== undefined && !shouldResetScreen) {
     calculate();
   }
@@ -55,6 +61,11 @@ function clearAll() {
 }
 
 function deleteNumber() {
+  if (currentOperand === "Error") {
+    clearAll();
+    return;
+  }
+
   if (
     currentOperand.length === 1 ||
     (currentOperand.length === 2 && currentOperand.startsWith("-"))
