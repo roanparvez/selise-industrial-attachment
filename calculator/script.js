@@ -118,6 +118,30 @@ function calculate() {
   updateDisplay();
 }
 
+document.addEventListener("keydown", handleKeyboardInput);
+
+function handleKeyboardInput(e) {
+  if (currentOperand === "Error" && e.key !== "Escape") return;
+
+  if (e.key >= "0" && e.key <= "9") {
+    appendNumber(e.key);
+  } else if (e.key === ".") {
+    appendDecimal();
+  } else if (e.key === "=" || e.key === "Enter") {
+    calculate();
+  } else if (e.key === "Backspace") {
+    deleteNumber();
+  } else if (e.key === "Escape") {
+    clearAll();
+  } else if (e.key === "+" || e.key === "-") {
+    appendOperator(e.key);
+  } else if (e.key === "*") {
+    appendOperator("×");
+  } else if (e.key === "/") {
+    appendOperator("÷");
+  }
+}
+
 // Add button press animation
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
